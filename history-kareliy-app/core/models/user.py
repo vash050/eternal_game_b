@@ -15,8 +15,8 @@ if TYPE_CHECKING:
 
 
 class User(Base, SQLAlchemyBaseUserTable[UserIdType]):
-    first_name: Mapped[str]
-    last_name: Mapped[str]
+    first_name: Mapped[str | None]
+    last_name: Mapped[str | None]
     created_at = mapped_column(DateTime(), server_default=func.now())
 
     @classmethod
