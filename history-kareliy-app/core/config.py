@@ -11,6 +11,7 @@ class RunConfig(BaseModel):
 class ApiV1Prefix(BaseModel):
     prefix: str = "/v1"
     auth: str = "/auth"
+    users: str = "/users"
 
 
 class ApiPrefix(BaseModel):
@@ -20,7 +21,7 @@ class ApiPrefix(BaseModel):
     @property
     def bearer_token_url(self) -> str:
         parts = (self.prefix, self.v1.prefix, self.v1.auth, "/login")
-        path = "/".join(parts)
+        path = "".join(parts)
         return path.removeprefix("/")
 
 
