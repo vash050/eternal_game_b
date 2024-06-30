@@ -8,12 +8,13 @@ from sqlalchemy import DateTime, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from core.models import Base
+from core.types.user_id import UserIdType
 
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
 
 
-class User(Base, SQLAlchemyBaseUserTable[int]):
+class User(Base, SQLAlchemyBaseUserTable[UserIdType]):
     first_name: Mapped[str]
     last_name: Mapped[str]
     created_at = mapped_column(DateTime(), server_default=func.now())
