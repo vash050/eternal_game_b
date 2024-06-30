@@ -14,7 +14,7 @@ from .auth import router as auth_router
 # http_bearer = HTTPBearer(auto_error=False)
 
 router = APIRouter(
-    prefix=settings.api.v1.prefix,
+    prefix=settings.api_prefix.v1.auth,
     # dependencies=[Depends(http_bearer)],
 )
 router.include_router(auth_router)
