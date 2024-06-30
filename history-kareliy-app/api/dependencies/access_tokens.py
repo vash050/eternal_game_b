@@ -12,9 +12,9 @@ if TYPE_CHECKING:
 
 
 async def get_access_tokens_db(
-        session: Annotated[
-            "AsyncSession",
-            Depends(db_helper.session_getter),
-        ],
+    session: Annotated[
+        "AsyncSession",
+        Depends(db_helper.session_getter),
+    ],
 ):
     yield AccessToken.get_db(session=session)
