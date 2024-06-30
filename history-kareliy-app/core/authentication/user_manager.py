@@ -9,9 +9,7 @@ from fastapi_users import (
 
 from core.config import settings
 from core.types.user_id import UserIdType
-from core.models import (
-    User,
-)
+from core.models import User
 
 if TYPE_CHECKING:
     from fastapi import Request

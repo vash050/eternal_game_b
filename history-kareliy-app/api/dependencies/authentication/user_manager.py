@@ -11,9 +11,9 @@ if TYPE_CHECKING:
 
 
 async def get_user_manager(
-    user_db: Annotated[
+    users_db: Annotated[
         "SQLAlchemyUserDatabase",
         Depends(get_users_db),
     ]
 ):
-    yield UserManager(user_db)
+    yield UserManager(users_db)
