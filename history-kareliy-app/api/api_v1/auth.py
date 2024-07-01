@@ -29,5 +29,14 @@ router.include_router(
 # /request-verify-token
 # /verify
 router.include_router(
-    router=fastapi_users.get_verify_router(UserRead,),
+    router=fastapi_users.get_verify_router(
+        UserRead,
+    ),
+)
+
+
+# /reset-password
+# /forgot-password
+router.include_router(
+    router=fastapi_users.get_reset_password_router(),
 )

@@ -67,10 +67,7 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
-    op.drop_index(
-        op.f("ix_access_tokens_created_at"), table_name="access_tokens"
-    )
+    op.drop_index(op.f("ix_access_tokens_created_at"), table_name="access_tokens")
     op.drop_table("access_tokens")
     op.drop_index(op.f("ix_users_email"), table_name="users")
     op.drop_table("users")
-
