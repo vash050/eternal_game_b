@@ -5,7 +5,6 @@ from os import getenv
 from api.dependencies.authentication import get_users_db
 from api.dependencies.authentication.user_manager import get_user_manager
 from core.authentication.user_manager import UserManager
-from core.config import settings
 from core.models import User, db_helper
 from core.schemas.user import UserCreate
 
