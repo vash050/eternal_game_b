@@ -42,9 +42,9 @@ async def update_race(
     return race
 
 
-async def delete_tag(
+async def delete_race(
     session: AsyncSession,
-    tag: Race,
+    race: Race,
 ) -> None:
-    await session.delete(tag)
+    await session.delete(race)
     await session.commit()

@@ -5,6 +5,6 @@ from .race import router as race_router
 
 router = APIRouter(
     prefix=settings.api_prefix.v1.units,
-    tags=["units"],
+    tags=["Units"],
 )
 router.include_router(race_router)

@@ -16,7 +16,7 @@ class RaceUpdate(RaseBase):
     pass
 
 
-class Race(BaseModel):
+class Race(RaseBase):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
