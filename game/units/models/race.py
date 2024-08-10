@@ -2,7 +2,7 @@ from sqlalchemy import Column, Boolean
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
-from core.models import Base
+from units.models.base import Base
 from units.models.mixins.id_int_mixin import IdIntPkMixin
 
 

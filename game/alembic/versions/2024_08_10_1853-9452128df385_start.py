@@ -1,8 +1,8 @@
 """start
 
-Revision ID: 42330b0b8338
+Revision ID: 9452128df385
 Revises: 
-Create Date: 2024-08-09 15:06:11.608667
+Create Date: 2024-08-10 18:53:14.847033
 
 """
 
@@ -11,10 +11,10 @@ from typing import Sequence, Union
 import fastapi_users_db_sqlalchemy
 from alembic import op
 import sqlalchemy as sa
-
+from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision: str = "42330b0b8338"
+revision: str = "9452128df385"
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -63,10 +63,26 @@ def upgrade() -> None:
         ["created_at"],
         unique=False,
     )
+    op.create_table(
+        "races",
+        sa.Column(
+            "race_bonus",
+            postgresql.JSONB(astext_type=sa.Text()),
+            nullable=True,
+        ),
+        sa.Column("name", sa.String(), nullable=False),
+        sa.Column("description", sa.String(), nullable=False),
+        sa.Column("is_active", sa.Boolean(), nullable=False),
+        sa.Column("id", sa.Integer(), nullable=False),
+        sa.PrimaryKeyConstraint("id", name=op.f("pk_races")),
+    )
 
 
 def downgrade() -> None:
-    op.drop_index(op.f("ix_access_tokens_created_at"), table_name="access_tokens")
+    op.drop_table("races")
+    op.drop_index(
+        op.f("ix_access_tokens_created_at"), table_name="access_tokens"
+    )
     op.drop_table("access_tokens")
     op.drop_index(op.f("ix_users_email"), table_name="users")
     op.drop_table("users")
