@@ -3,7 +3,7 @@ services:
   pg:
     image: postgres
     environment:
-      POSTGRES_DB: history-kareliy
+      POSTGRES_DB: eternal-game
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
     ports:

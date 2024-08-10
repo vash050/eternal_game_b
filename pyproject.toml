@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "history-kareliy"
+name = "eternal-game"
 version = "0.1.0"
 description = ""
 authors = ["vasiliy <vash050@rambler.ru>"]
