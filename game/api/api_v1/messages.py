@@ -20,10 +20,10 @@ router = APIRouter(
 
 @router.get("")
 def get_user_messages(
-        user: Annotated[
-            User,
-            Depends(current_user),
-        ],
+    user: Annotated[
+        User,
+        Depends(current_user),
+    ],
 ):
     return {
         "message": ["m1", "m2", "m3", "m4", "m5"],
@@ -33,10 +33,10 @@ def get_user_messages(
 
 @router.get("/secrets")
 def get_superuser_messages(
-        user: Annotated[
-            User,
-            Depends(current_superuser),
-        ],
+    user: Annotated[
+        User,
+        Depends(current_superuser),
+    ],
 ):
     return {
         "message": ["secret-m1", "secret-m2", "secret-m3", "secret-m4", "secret-m5"],
