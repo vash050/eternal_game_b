@@ -1,6 +1,6 @@
 __all__ = (
     "Race",
-    "Base"
+    "Base",
 )
 
 from .race import Race, Base
