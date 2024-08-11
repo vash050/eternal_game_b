@@ -5,6 +5,7 @@ class RaseBase(BaseModel):
     name: str
     description: str
     race_bonus: dict[str, str]
+    img_url: str
     is_active: bool
 
 
