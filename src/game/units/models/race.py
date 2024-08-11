@@ -3,7 +3,7 @@ from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
 from game.general.base import Base
-from game.units.models.mixins.id_int_mixin import IdIntPkMixin
+from game.general import IdIntPkMixin
 
 
 class Race(Base, IdIntPkMixin):
