@@ -17,6 +17,7 @@ class ApiV1Prefix(BaseModel):
     grade: str = "/grade"
     general: str = "/general"
     race: str = "/race"
+    power_current: str = "/power_current"
 
 
 class ApiPrefix(BaseModel):

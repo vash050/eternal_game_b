@@ -52,7 +52,7 @@ async def get_grade(
 
 
 @router.put("/{grade_id}/", response_model=Grade)
-async def update_race(
+async def update_grade(
     grade_update: GradeUpdate,
     grade=Depends(grade_by_id),
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
