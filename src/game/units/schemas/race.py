@@ -17,6 +17,14 @@ class RaceUpdate(RaseBase):
     pass
 
 
+class RaceUpdatePartial(RaceCreate):
+    name: str | None = None
+    description: str | None = None
+    race_bonus: dict[str, str] | None = None
+    img_url: str | None = None
+    is_active: bool | None = False
+
+
 class Race(RaseBase):
     model_config = ConfigDict(from_attributes=True)
 

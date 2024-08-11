@@ -3,8 +3,15 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.dependencies.units.get_by_id import race_by_id
 from core.models import db_helper
-from game.units.crud import race_crud
-from game.units.schemas.race import Race, RaceCreate, RaceUpdate
+from game.general.crud.crud import (
+    get_objects,
+    create_object,
+    delete_object,
+    update_object,
+)
+
+from game.units.schemas.race import Race, RaceCreate, RaceUpdate, RaceUpdatePartial
+from game import Race as RaceModel
 
 router = APIRouter()
 
@@ -13,7 +20,7 @@ router = APIRouter()
 async def get_races(
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
-    return await race_crud.get_races(session=session)
+    return await get_objects(session=session, class_object=RaceModel)
 
 
 @router.post(
@@ -25,7 +32,9 @@ async def create_race(
     race_in: RaceCreate,
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
-    return await race_crud.create_race(session=session, race_in=race_in)
+    return await create_object(
+        session=session, object_in=race_in, class_object=RaceModel
+    )
 
 
 @router.get("/{race_id}/", response_model=Race)
@@ -41,10 +50,24 @@ async def update_race(
     race=Depends(race_by_id),
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
-    return await race_crud.update_race(
+    return await update_object(
         session=session,
-        race=race,
-        race_update=race_update,
+        class_object=race,
+        object_update=race_update,
+    )
+
+
+@router.patch("/{race_id}/")
+async def update_race_partial(
+    race_update: RaceUpdatePartial,
+    race: Race = Depends(race_by_id),
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+):
+    return await update_object(
+        session=session,
+        class_object=race,
+        object_update=race_update,
+        partial=True,
     )
 
 
@@ -53,4 +76,4 @@ async def delete_race(
     race=Depends(race_by_id),
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
-    await race_crud.delete_race(session=session, race=race)
+    await delete_object(session=session, class_object=race)
