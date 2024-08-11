@@ -9,7 +9,7 @@ from alembic import context
 
 from core.config import settings
 from core.models import Base as core
-from units.models import Base as units
+from game.general import Base as units
 
 
 # this is the Alembic Config object, which provides

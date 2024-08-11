@@ -5,8 +5,8 @@ from fastapi import Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.models import db_helper
-from units.crud import race_crud
-from units.models import Race
+from game.units.crud import race_crud
+from game.units.models import Race
 
 
 async def race_by_id(

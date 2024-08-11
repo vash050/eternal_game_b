@@ -2,8 +2,8 @@ from sqlalchemy import Column, Boolean
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
-from units.models.base import Base
-from units.models.mixins.id_int_mixin import IdIntPkMixin
+from game.general.base import Base
+from game.units.models.mixins.id_int_mixin import IdIntPkMixin
 
 
 class Race(Base, IdIntPkMixin):

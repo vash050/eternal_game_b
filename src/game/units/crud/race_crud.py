@@ -1,8 +1,8 @@
 from sqlalchemy import select, Result
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from units.models import Race
-from units.schemas.race import RaceCreate, RaceUpdate
+from game.units.models import Race
+from game.units.schemas.race import RaceCreate, RaceUpdate
 
 
 async def get_races(
