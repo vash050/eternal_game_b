@@ -1,5 +1,3 @@
-__all__ = (
-    "Race",
-)
+__all__ = ("Race",)
 
 from .race import Race
