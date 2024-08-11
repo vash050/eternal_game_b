@@ -14,6 +14,9 @@ class ApiV1Prefix(BaseModel):
     users: str = "/users"
     messages: str = "/messages"
     units: str = "/units"
+    grade: str = "/grade"
+    general: str = "/general"
+    race: str = "/race"
 
 
 class ApiPrefix(BaseModel):

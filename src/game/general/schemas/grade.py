@@ -18,6 +18,15 @@ class GradeUpdate(GradeBase):
     pass
 
 
+class GradeUpdatePartial(GradeCreate):
+    name: str | None = None
+    description: str | None = None
+    color: str | None = None
+    race_bonus: dict[str, str] | None = None
+    img_url: str | None = None
+    is_active: bool | None = False
+
+
 class Grade(GradeBase):
     model_config = ConfigDict(from_attributes=True)
 

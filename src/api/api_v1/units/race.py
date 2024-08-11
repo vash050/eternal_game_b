@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.dependencies.units.get_by_id import race_by_id
+from core.config import settings
 from core.models import db_helper
 from game.general.crud.crud import (
     get_objects,
@@ -13,7 +14,9 @@ from game.general.crud.crud import (
 from game.units.schemas.race import Race, RaceCreate, RaceUpdate, RaceUpdatePartial
 from game import Race as RaceModel
 
-router = APIRouter()
+router = APIRouter(
+    prefix=settings.api_prefix.v1.race,
+)
 
 
 @router.get("/races", response_model=list[Race])
