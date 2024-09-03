@@ -7,12 +7,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from core.models import db_helper
 from game import Grade, PowerCurrent
 from game.general.crud.crud import get_object
-from game.units.models import Race
+from game.units.models import Race, UnitLevel
 
 
 async def race_by_id(
-    race_id: Annotated[int, Path],
-    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+        race_id: Annotated[int, Path],
+        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ) -> Race:
     race = await get_object(session=session, object_id=race_id, class_object=Race)
     if race is not None:
@@ -24,8 +24,8 @@ async def race_by_id(
 
 
 async def grade_by_id(
-    grade_id: Annotated[int, Path],
-    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+        grade_id: Annotated[int, Path],
+        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ) -> Grade:
     grade = await get_object(session=session, object_id=grade_id, class_object=Grade)
     if grade is not None:
@@ -37,8 +37,8 @@ async def grade_by_id(
 
 
 async def power_current_by_id(
-    power_current_id: Annotated[int, Path],
-    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+        power_current_id: Annotated[int, Path],
+        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ) -> PowerCurrent:
     power_current = await get_object(
         session=session, object_id=power_current_id, class_object=PowerCurrent
@@ -48,4 +48,19 @@ async def power_current_by_id(
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,
         detail=f"Grade {power_current_id} not found",
+    )
+
+
+async def unit_level_by_id(
+        unit_level_id: Annotated[int, Path],
+        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+) -> UnitLevel:
+    unit_level = await get_object(
+        session=session, object_id=unit_level_id, class_object=UnitLevel
+    )
+    if unit_level is not None:
+        return unit_level
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail=f"Grade {unit_level_id} not found",
     )
