@@ -5,6 +5,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 from game import Base, IdIntPkMixin
 
 
+# TODO: исправить race_bonus на grade_bonus
 class Grade(Base, IdIntPkMixin):
     name: Mapped[str]
     description: Mapped[str]
