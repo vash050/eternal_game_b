@@ -11,8 +11,8 @@ from game.units.models import Race, UnitLevel
 
 
 async def race_by_id(
-        race_id: Annotated[int, Path],
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    race_id: Annotated[int, Path],
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ) -> Race:
     race = await get_object(session=session, object_id=race_id, class_object=Race)
     if race is not None:
@@ -24,8 +24,8 @@ async def race_by_id(
 
 
 async def grade_by_id(
-        grade_id: Annotated[int, Path],
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    grade_id: Annotated[int, Path],
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ) -> Grade:
     grade = await get_object(session=session, object_id=grade_id, class_object=Grade)
     if grade is not None:
@@ -37,8 +37,8 @@ async def grade_by_id(
 
 
 async def power_current_by_id(
-        power_current_id: Annotated[int, Path],
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    power_current_id: Annotated[int, Path],
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ) -> PowerCurrent:
     power_current = await get_object(
         session=session, object_id=power_current_id, class_object=PowerCurrent
@@ -52,8 +52,8 @@ async def power_current_by_id(
 
 
 async def unit_level_by_id(
-        unit_level_id: Annotated[int, Path],
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    unit_level_id: Annotated[int, Path],
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ) -> UnitLevel:
     unit_level = await get_object(
         session=session, object_id=unit_level_id, class_object=UnitLevel
@@ -67,8 +67,8 @@ async def unit_level_by_id(
 
 
 async def element_by_id(
-        element_id: Annotated[int, Path],
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    element_id: Annotated[int, Path],
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ) -> Element:
     element = await get_object(
         session=session, object_id=element_id, class_object=Element

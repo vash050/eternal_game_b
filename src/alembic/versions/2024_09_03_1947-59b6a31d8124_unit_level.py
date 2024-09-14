@@ -22,9 +22,7 @@ depends_on: Union[str, Sequence[str], None] = None
 def upgrade() -> None:
     op.create_table(
         "unit_levels",
-        sa.Column(
-            "bonus", postgresql.JSONB(astext_type=sa.Text()), nullable=True
-        ),
+        sa.Column("bonus", postgresql.JSONB(astext_type=sa.Text()), nullable=True),
         sa.Column("name", sa.Integer(), nullable=False),
         sa.Column("description", sa.String(), nullable=False),
         sa.Column("max_experience", sa.Integer(), nullable=False),

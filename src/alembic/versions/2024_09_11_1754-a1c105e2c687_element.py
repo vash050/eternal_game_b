@@ -23,9 +23,7 @@ def upgrade() -> None:
     op.create_table(
         "elements",
         sa.Column("id", sa.Integer(), nullable=False),
-        sa.Column(
-            "features", postgresql.JSONB(astext_type=sa.Text()), nullable=True
-        ),
+        sa.Column("features", postgresql.JSONB(astext_type=sa.Text()), nullable=True),
         sa.Column("name", sa.String(), nullable=False),
         sa.Column("description", sa.String(), nullable=False),
         sa.Column("img_url", sa.String(), nullable=False),

@@ -25,9 +25,7 @@ def upgrade() -> None:
         sa.Column("name", sa.String(), nullable=False),
         sa.Column("description", sa.String(), nullable=False),
         sa.Column("endurance", sa.SMALLINT(), nullable=False),
-        sa.Column(
-            "features", postgresql.JSONB(astext_type=sa.Text()), nullable=True
-        ),
+        sa.Column("features", postgresql.JSONB(astext_type=sa.Text()), nullable=True),
         sa.Column("img_url", sa.String(), nullable=False),
         sa.Column("grade_id", sa.Integer(), nullable=False),
         sa.Column("is_active", sa.Boolean(), nullable=False),
@@ -55,9 +53,7 @@ def upgrade() -> None:
             ["materials.id"],
             name=op.f("fk_material_element_association_material_id_materials"),
         ),
-        sa.PrimaryKeyConstraint(
-            "id", name=op.f("pk_material_element_association")
-        ),
+        sa.PrimaryKeyConstraint("id", name=op.f("pk_material_element_association")),
         sa.UniqueConstraint(
             "material_id", "element_id", name="idx_unique_material_element"
         ),

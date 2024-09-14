@@ -18,14 +18,12 @@ from game.general.schemas.element import (
     ElementUpdatePartial,
 )
 
-router = APIRouter(
-    prefix=settings.api_prefix.v1.element
-)
+router = APIRouter(prefix=settings.api_prefix.v1.element)
 
 
 @router.get("/elements", response_model=list[Element])
 async def get_elements(
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
     return await get_objects(session=session, class_object=ElementModel)
 
@@ -36,8 +34,8 @@ async def get_elements(
     status_code=status.HTTP_201_CREATED,
 )
 async def create_element(
-        element_in: ElementCreate,
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    element_in: ElementCreate,
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
     return await create_object(
         session=session, object_in=element_in, class_object=ElementModel
@@ -46,16 +44,16 @@ async def create_element(
 
 @router.get("/{element_id}/", response_model=Element)
 async def get_element(
-        element=Depends(element_by_id),
+    element=Depends(element_by_id),
 ):
     return element
 
 
 @router.put("/{element_id}/", response_model=Element)
 async def update_element(
-        element_update: ElementUpdate,
-        element=Depends(element_by_id),
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    element_update: ElementUpdate,
+    element=Depends(element_by_id),
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
     return await update_object(
         session=session,
@@ -66,9 +64,9 @@ async def update_element(
 
 @router.patch("/{element_id}/")
 async def update_element_partial(
-        element_update: ElementUpdatePartial,
-        element: Element = Depends(element_by_id),
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    element_update: ElementUpdatePartial,
+    element: Element = Depends(element_by_id),
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
     return await update_object(
         session=session,
@@ -80,7 +78,7 @@ async def update_element_partial(
 
 @router.delete("/{element_id}/", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_element(
-        element=Depends(element_by_id),
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    element=Depends(element_by_id),
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
     await delete_object(session=session, class_object=element)

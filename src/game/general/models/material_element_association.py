@@ -1,13 +1,19 @@
-from sqlalchemy import Table, Column, ForeignKey, SMALLINT, Integer, UniqueConstraint
+from sqlalchemy import ForeignKey, SMALLINT, UniqueConstraint
+from sqlalchemy.orm import Mapped, mapped_column
 
-from game import Base
+from game import Base, IdIntPkMixin
 
-material_element_association_table = Table(
-    "material_element_association",
-    Base.metadata,
-    Column("id", Integer, primary_key=True),
-    Column("material_id", ForeignKey("materials.id"), nullable=False),
-    Column("element_id", ForeignKey("elements.id"), nullable=False),
-    Column("quantity", SMALLINT),
-    UniqueConstraint("material_id", "element_id", name="idx_unique_material_element"),
-)
+
+class MaterialElementAssociation(Base, IdIntPkMixin):
+    __tablename__ = "material_element_association"
+    __table_args__ = (
+        UniqueConstraint(
+            "material_id",
+            "element_id",
+            name="idx_unique_material_element",
+        ),
+    )
+
+    material_id: Mapped[int] = mapped_column(ForeignKey("materials.id"))
+    element_id: Mapped[int] = mapped_column(ForeignKey("elements.id"))
+    quantity: Mapped[int] = mapped_column(SMALLINT, default=100)

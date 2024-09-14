@@ -6,7 +6,6 @@ from sqlalchemy.dialects.postgresql import JSONB, SMALLINT
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from game import Base, IdIntPkMixin
-from .material_element_association import material_element_association_table
 
 if TYPE_CHECKING:
     from .element import Element
@@ -16,7 +15,7 @@ class Material(Base, IdIntPkMixin):
     name: Mapped[str]
     description: Mapped[str]
     elements: Mapped[list[Element]] = relationship(
-        secondary=material_element_association_table,
+        secondary="material_element_association_table",
         back_populates="materials",
     )
     endurance: Mapped[int] = mapped_column(SMALLINT, default=100)
