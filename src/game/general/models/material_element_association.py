@@ -16,4 +16,4 @@ class MaterialElementAssociation(Base, IdIntPkMixin):
 
     material_id: Mapped[int] = mapped_column(ForeignKey("materials.id"))
     element_id: Mapped[int] = mapped_column(ForeignKey("elements.id"))
-    quantity: Mapped[int] = mapped_column(SMALLINT, default=100)
+    quantity: Mapped[int] = mapped_column(SMALLINT, default=100, server_default="100")
