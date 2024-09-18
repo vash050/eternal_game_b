@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from api.dependencies.units.get_by_id import element_by_id
 from core.config import settings
 from core.models import db_helper
-from game import Element as Elementelement
+from game import Element as ElementModel
 from game.general.crud.crud import (
     get_objects,
     create_object,

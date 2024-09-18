@@ -5,7 +5,7 @@ from fastapi import Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.models import db_helper
-from game import Grade, PowerCurrent, Element
+from game import Grade, PowerCurrent, Element, Material
 from game.general.crud.crud import get_object
 from game.units.models import Race, UnitLevel
 
@@ -78,4 +78,19 @@ async def element_by_id(
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,
         detail=f"Element {element_id} not found",
+    )
+
+
+async def material_by_id(
+    material_id: Annotated[int, Path],
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+) -> Material:
+    material = await get_object(
+        session=session, object_id=material_id, class_object=Material
+    )
+    if material is not None:
+        return material
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail=f"Material {material_id} not found",
     )

@@ -9,6 +9,7 @@ from game import Base, IdIntPkMixin
 
 if TYPE_CHECKING:
     from .material import Material
+    from .material_element_association import MaterialElementAssociation
 
 
 class Element(Base, IdIntPkMixin):
@@ -18,7 +19,6 @@ class Element(Base, IdIntPkMixin):
     img_url: Mapped[str]
     grade_id: Mapped[int] = mapped_column(ForeignKey("grades.id"))
     is_active: Mapped[bool] = mapped_column(Boolean, default=False)
-    materials: Mapped[list[Material]] = relationship(
-        secondary="material_element_association_table",
-        back_populates="elements",
+    material_details: Mapped[list["MaterialElementAssociation"]] = relationship(
+        back_populates="element"
     )

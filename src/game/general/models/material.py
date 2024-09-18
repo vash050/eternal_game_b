@@ -9,14 +9,14 @@ from game import Base, IdIntPkMixin
 
 if TYPE_CHECKING:
     from .element import Element
+    from .material_element_association import MaterialElementAssociation
 
 
 class Material(Base, IdIntPkMixin):
     name: Mapped[str]
     description: Mapped[str]
-    elements: Mapped[list[Element]] = relationship(
-        secondary="material_element_association_table",
-        back_populates="materials",
+    element_details: Mapped[list["MaterialElementAssociation"]] = relationship(
+        back_populates="material"
     )
     endurance: Mapped[int] = mapped_column(SMALLINT, default=100)
     features = Column(JSONB)

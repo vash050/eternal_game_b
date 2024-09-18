@@ -1,7 +1,8 @@
-from sqlalchemy import select, Result
+from sqlalchemy import select, Result, ScalarResult
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import lazyload, selectinload
 
-from game import Grade
+from game import Grade, Material, MaterialElementAssociation
 from game.general.schemas.grade import GradeUpdate, GradeCreate
 
 
@@ -12,6 +13,30 @@ async def get_objects(
     stmt = select(class_object).order_by(class_object.id)
     result: Result = await session.execute(stmt)
     objects = result.scalars().all()
+    return list(objects)
+
+
+async def get_objects_m2m(
+    session: AsyncSession,
+    class_object: object,
+) -> list[object]:
+    stmt = (
+        select(Material)
+        .options(
+            selectinload(Material.element_details).joinedload(
+                MaterialElementAssociation.element
+            ),
+        )
+        .order_by(Material.id)
+    )
+    result = await session.scalars(stmt)
+
+    objects = result
+    # for object_ in result:
+    #     print(object_.id, object_.name, object_.endurance)
+    #     for element in object_.element_details:
+    #         print(element.id, element.quantity)
+
     return list(objects)
 
 

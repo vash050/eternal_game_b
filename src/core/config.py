@@ -20,6 +20,7 @@ class ApiV1Prefix(BaseModel):
     power_current: str = "/power_current"
     unit_level: str = "/unit_level"
     element: str = "/element"
+    material: str = "/material"
 
 
 class ApiPrefix(BaseModel):
