@@ -56,6 +56,10 @@ class AccessToken(BaseModel):
     verification_token_secret: str
 
 
+class SqlAlchemySettings(BaseModel):
+    count_column_out: int
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=(".env.template", ".env"),
@@ -67,6 +71,7 @@ class Settings(BaseSettings):
     api_prefix: ApiPrefix = ApiPrefix()
     db: DatabaseConfig
     access_token: AccessToken
+    sqlal: SqlAlchemySettings
 
 
 settings = Settings()
