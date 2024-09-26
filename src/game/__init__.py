@@ -19,3 +19,5 @@ from .general.models.material_element_association import MaterialElementAssociat
 from .general.models.power_current import PowerCurrent
 from .units.models import Race
 from .units.models import UnitLevel
+from .units.models import Unit
+from .units.models import Skill
