@@ -2,6 +2,8 @@ from pydantic import BaseModel, ConfigDict
 
 
 class ElementBase(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     name: str
     description: str
     features: dict[str, str]

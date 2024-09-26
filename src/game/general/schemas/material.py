@@ -1,16 +1,17 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel
+
+from game.general.schemas.element import Element
 
 
 class MaterialBase(BaseModel):
-
     name: str
     description: str
-    # element_details: list
     endurance: int
     features: dict[str, str]
     img_url: str
     grade_id: int
     is_active: bool
+    elements: list["Element"]
 
 
 class MaterialCreate(MaterialBase):
@@ -32,6 +33,4 @@ class MaterialUpdatePartial(MaterialBase):
 
 
 class Material(MaterialBase):
-    model_config = ConfigDict(from_attributes=True)
-
     id: int
