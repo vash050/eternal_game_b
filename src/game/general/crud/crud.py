@@ -2,8 +2,6 @@ from sqlalchemy import select, Result
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from game import Material
-
 
 async def get_objects(
         session: AsyncSession,
@@ -12,7 +10,6 @@ async def get_objects(
     stmt = select(class_object).order_by(class_object.id)
     result: Result = await session.execute(stmt)
     objects = result.scalars().all()
-    print(f"{objects=}")
     return list(objects)
 
 
@@ -30,6 +27,7 @@ async def get_objects_m2m(
     )
     result = await session.execute(stmt)
     objects = result.scalars().all()
+    print(objects)
     return list(objects)
 
 
