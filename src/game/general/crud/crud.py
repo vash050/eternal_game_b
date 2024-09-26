@@ -27,7 +27,6 @@ async def get_objects_m2m(
     )
     result = await session.execute(stmt)
     objects = result.scalars().all()
-    print(objects)
     return list(objects)
 
 
