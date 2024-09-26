@@ -24,9 +24,11 @@ router = APIRouter(prefix=settings.api_prefix.v1.material)
 
 @router.get("/materials", response_model=list[Material])
 async def get_materials(
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
-    return await get_objects_m2m(session=session, class_object=MaterialModel, field_name=MaterialModel.elements)
+    return await get_objects_m2m(
+        session=session, class_object=MaterialModel, field_name=MaterialModel.elements
+    )
 
 
 @router.post(
@@ -35,8 +37,8 @@ async def get_materials(
     status_code=status.HTTP_201_CREATED,
 )
 async def create_material(
-        material_in: MaterialCreate,
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    material_in: MaterialCreate,
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
     return await create_object(
         session=session, object_in=material_in, class_object=MaterialModel
@@ -45,16 +47,16 @@ async def create_material(
 
 @router.get("/{material_id}/", response_model=Material)
 async def get_material(
-        material=Depends(material_by_id),
+    material=Depends(material_by_id),
 ):
     return material
 
 
 @router.put("/{material_id}/", response_model=Material)
 async def update_material(
-        material_update: MaterialUpdate,
-        material=Depends(material_by_id),
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    material_update: MaterialUpdate,
+    material=Depends(material_by_id),
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
     return await update_object(
         session=session,
@@ -65,9 +67,9 @@ async def update_material(
 
 @router.patch("/{material_id}/")
 async def update_material_partial(
-        material_update: MaterialUpdatePartial,
-        material: Material = Depends(material_by_id),
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    material_update: MaterialUpdatePartial,
+    material: Material = Depends(material_by_id),
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
     return await update_object(
         session=session,
@@ -79,7 +81,7 @@ async def update_material_partial(
 
 @router.delete("/{material_id}/", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_material(
-        material=Depends(material_by_id),
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    material=Depends(material_by_id),
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
     await delete_object(session=session, class_object=material)

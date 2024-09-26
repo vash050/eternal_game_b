@@ -47,9 +47,7 @@ def upgrade() -> None:
             postgresql.JSONB(astext_type=sa.Text()),
             nullable=False,
         ),
-        sa.Column(
-            "damage", postgresql.JSONB(astext_type=sa.Text()), nullable=False
-        ),
+        sa.Column("damage", postgresql.JSONB(astext_type=sa.Text()), nullable=False),
         sa.Column(
             "penetrate",
             postgresql.JSONB(astext_type=sa.Text()),

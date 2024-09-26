@@ -29,4 +29,6 @@ class Material(Base, IdIntPkMixin):
     is_active: Mapped[bool] = mapped_column(Boolean, default=False)
 
     repr_cols_num = 6
-    repr_cols_str = ["elements", ]
+    repr_cols_str = [
+        "elements",
+    ]

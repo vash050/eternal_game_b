@@ -45,6 +45,7 @@ class UnitUpdatePartial(UnitCreate):
     skills: list["Skill"] | None
     # hidden_parameters: list["HiddenParameters"] | None
 
+
 class Unit(UnitBase):
     model_config = ConfigDict(from_attributes=True)
 
