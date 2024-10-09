@@ -22,3 +22,4 @@ class Skill(Base, IdIntPkMixin):
         secondary="unit_skill_association",
     )
     is_active: Mapped[bool] = mapped_column(Boolean, default=False)
+    # таблица условий для получения скила
