@@ -18,6 +18,7 @@ class ApiV1Prefix(BaseModel):
     general: str = "/general"
     race: str = "/race"
     power_current: str = "/power_current"
+    physics_parameter: str = "/physics_parameter"
     unit_level: str = "/unit_level"
     element: str = "/element"
     material: str = "/material"

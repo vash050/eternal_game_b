@@ -5,7 +5,7 @@ from fastapi import Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.models import db_helper
-from game import Grade, PowerCurrent, Element, Material
+from game import Grade, PowerCurrent, Element, Material, PhysicsParameter
 from game.general.crud.crud import get_object
 from game.units.models import Race, UnitLevel
 
@@ -93,4 +93,19 @@ async def material_by_id(
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,
         detail=f"Material {material_id} not found",
+    )
+
+
+async def physics_parameter_by_id(
+    physics_parameter_id: Annotated[int, Path],
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+) -> PhysicsParameter:
+    physics_parameter = await get_object(
+        session=session, object_id=physics_parameter_id, class_object=PhysicsParameter
+    )
+    if physics_parameter is not None:
+        return physics_parameter
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail=f"PhysicsParameter {physics_parameter_id} not found",
     )

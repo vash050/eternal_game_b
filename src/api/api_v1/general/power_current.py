@@ -11,11 +11,7 @@ from game.general.crud.crud import (
     delete_object,
     update_object,
 )
-from game.general.schemas.grade import (
-    GradeUpdate,
-    Grade,
-    GradeUpdatePartial,
-)
+
 from game.general.schemas.power_current import (
     PowerCurrent,
     PowerCurrentCreate,
@@ -72,7 +68,7 @@ async def update_power_current(
 @router.patch("/{power_current_id}/")
 async def update_power_current_partial(
     power_current_update: PowerCurrentUpdatePartial,
-    power_current: Grade = Depends(power_current_by_id),
+    power_current: PowerCurrent = Depends(power_current_by_id),
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
     return await update_object(
