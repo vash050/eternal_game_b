@@ -15,12 +15,14 @@ __all__ = (
 
 from .race import Race
 from .body_race import BodyRace
-from .body_characteristic import BodyCharacteristic
+from game.units.models.body_characteristic import BodyCharacteristic
 from .body_energy import BodyEnergy
-from .body_organ import BodyOrgan
-from .body_part import BodyPart
+from game.units.models.body_organ import BodyOrgan
+from game.units.models.body_part import BodyPart
 from .body_possible_state import BodyPossibleState
-from .body_race_body_organ_association import BodyRaceBodyOrganAssociation
+from game.units.models.race.body_race_body_organ_association import (
+    BodyRaceBodyOrganAssociation,
+)
 from .body_race_body_part_association import BodyRaceBodyPartAssociation
 from .body_race_body_characteristic_association import (
     BodyRaceBodyCharacteristicAssociation,

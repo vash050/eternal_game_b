@@ -7,10 +7,10 @@ from game.general.base import Base
 
 
 if TYPE_CHECKING:
-    from game.units.models.race.body_part import BodyPart
-    from game.units.models.race.body_organ import BodyOrgan
+    from game.units.models.body_part import BodyPart
+    from game.units.models.body_organ import BodyOrgan
     from game.units.models.race.body_possible_state import BodyPossibleState
-    from game.units.models.race.body_characteristic import BodyCharacteristic
+    from game.units.models.body_characteristic import BodyCharacteristic
     from game.units.models.race.body_energy import BodyEnergy
 
 

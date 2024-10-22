@@ -11,7 +11,7 @@ class BodyRaceBodyCharacteristicAssociation(Base, IdIntPkMixin):
         UniqueConstraint(
             "body_race_id",
             "body_characteristic_id",
-            name="idx_unique_body_race_body_characteristic",
+            name="idx_unique_body_race_characteristic",
         ),
     )
     body_race_id: Mapped[int] = mapped_column(ForeignKey("body_races.id"))

@@ -20,6 +20,7 @@ ____all__ = (
     "BodyRaceBodyCharacteristicAssociation",
     "BodyRaceBodyEnergyAssociation",
     "BodyRaceBodyPossibleStateAssociation",
+    "Energy",
 )
 
 from .general.base import Base
@@ -30,6 +31,7 @@ from .general.models.material import Material
 from .general.models.material_element_association import MaterialElementAssociation
 from .general.models.power_current import PowerCurrent
 from .general.models.physics_parameter import PhysicsParameter
+from .general.models.enegy import Energy
 from .units.models import (
     Race,
     BodyRace,
