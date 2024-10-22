@@ -9,6 +9,17 @@ ____all__ = (
     "Material",
     "MaterialElementAssociation",
     "PhysicsParameter",
+    "BodyRace",
+    "BodyCharacteristic",
+    "BodyEnergy",
+    "BodyPart",
+    "BodyOrgan",
+    "BodyPossibleState",
+    "BodyRaceBodyPartAssociation",
+    "BodyRaceBodyOrganAssociation",
+    "BodyRaceBodyCharacteristicAssociation",
+    "BodyRaceBodyEnergyAssociation",
+    "BodyRaceBodyPossibleStateAssociation",
 )
 
 from .general.base import Base
@@ -19,7 +30,20 @@ from .general.models.material import Material
 from .general.models.material_element_association import MaterialElementAssociation
 from .general.models.power_current import PowerCurrent
 from .general.models.physics_parameter import PhysicsParameter
-from .units.models import Race
-from .units.models import UnitLevel
-from .units.models import Unit
-from .units.models import Skill
+from .units.models import (
+    Race,
+    BodyRace,
+    UnitLevel,
+    Unit,
+    Skill,
+    BodyCharacteristic,
+    BodyEnergy,
+    BodyPart,
+    BodyOrgan,
+    BodyPossibleState,
+    BodyRaceBodyPartAssociation,
+    BodyRaceBodyOrganAssociation,
+    BodyRaceBodyCharacteristicAssociation,
+    BodyRaceBodyEnergyAssociation,
+    BodyRaceBodyPossibleStateAssociation,
+)
