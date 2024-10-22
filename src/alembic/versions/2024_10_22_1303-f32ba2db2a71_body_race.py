@@ -111,9 +111,7 @@ def upgrade() -> None:
         sa.ForeignKeyConstraint(
             ["body_race_id"],
             ["body_races.id"],
-            name=op.f(
-                "fk_body_race_body_energy_association_body_race_id_body_races"
-            ),
+            name=op.f("fk_body_race_body_energy_association_body_race_id_body_races"),
         ),
         sa.PrimaryKeyConstraint(
             "id", name=op.f("pk_body_race_body_energy_association")
@@ -133,20 +131,14 @@ def upgrade() -> None:
         sa.ForeignKeyConstraint(
             ["body_organ_id"],
             ["body_organs.id"],
-            name=op.f(
-                "fk_body_race_body_organ_association_body_organ_id_body_organs"
-            ),
+            name=op.f("fk_body_race_body_organ_association_body_organ_id_body_organs"),
         ),
         sa.ForeignKeyConstraint(
             ["body_race_id"],
             ["body_races.id"],
-            name=op.f(
-                "fk_body_race_body_organ_association_body_race_id_body_races"
-            ),
+            name=op.f("fk_body_race_body_organ_association_body_race_id_body_races"),
         ),
-        sa.PrimaryKeyConstraint(
-            "id", name=op.f("pk_body_race_body_organ_association")
-        ),
+        sa.PrimaryKeyConstraint("id", name=op.f("pk_body_race_body_organ_association")),
         sa.UniqueConstraint(
             "body_race_id",
             "body_organ_id",
@@ -162,20 +154,14 @@ def upgrade() -> None:
         sa.ForeignKeyConstraint(
             ["body_part_id"],
             ["body_parts.id"],
-            name=op.f(
-                "fk_body_race_body_part_association_body_part_id_body_parts"
-            ),
+            name=op.f("fk_body_race_body_part_association_body_part_id_body_parts"),
         ),
         sa.ForeignKeyConstraint(
             ["body_race_id"],
             ["body_races.id"],
-            name=op.f(
-                "fk_body_race_body_part_association_body_race_id_body_races"
-            ),
+            name=op.f("fk_body_race_body_part_association_body_race_id_body_races"),
         ),
-        sa.PrimaryKeyConstraint(
-            "id", name=op.f("pk_body_race_body_part_association")
-        ),
+        sa.PrimaryKeyConstraint("id", name=op.f("pk_body_race_body_part_association")),
         sa.UniqueConstraint(
             "body_race_id",
             "body_part_id",
@@ -222,9 +208,7 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
-    op.drop_constraint(
-        op.f("fk_races_body_body_races"), "races", type_="foreignkey"
-    )
+    op.drop_constraint(op.f("fk_races_body_body_races"), "races", type_="foreignkey")
     op.drop_column("races", "body")
     op.drop_table("body_race_body_possible_state_association")
     op.drop_table("body_race_body_part_association")
